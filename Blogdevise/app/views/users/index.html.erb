@@ -1,0 +1,48 @@
+ <h1>List Of All Users</h1>
+ <br/><br/>
+
+  <table>
+  <thead>
+    <tr>
+      <th>Username &nbsp; &nbsp;</th>
+      <th>Email &nbsp; &nbsp;</th>
+      <th>No. Of Articles &nbsp; &nbsp;</th>
+      <th>Actions &nbsp; &nbsp;</th>
+      
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_path(current_user), class: "text-info"%>  <%="(Admin)" if user.admin? %></td>
+        <td><%= user.email %> &nbsp;</td>
+        <td><%= user.articles.size %> -Articles </td>
+        <td>
+        <%= link_to 'View Profile |', user %>&nbsp;
+         <% if user_signed_in? %>
+              <% if user == current_user || current_user.admin? %>
+                <%= link_to "Edit", edit_user_path(user)%> &nbsp;
+              <% end %>
+              <% if current_user.admin? %>
+                <%= link_to "Delete", user_path(user), method: :delete,
+                data: {confirm: "Are you sure you want to delete the user account and all associated articles?"} %>&nbsp;
+              <% end %>
+            <%end%>  
+        </td>
+         
+       
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<div class="digg_pagination">
+    <%= will_paginate @users, :container => false %>
+  </div>
+<br/>
+<p>
+<%= link_to '[ Cancel and return to Home]', root_path %>
+</p>

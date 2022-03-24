@@ -1,0 +1,36 @@
+ <table>
+  <thead>
+    <tr>
+      <th>Title &nbsp; &nbsp;</th>
+      <th>Description &nbsp; &nbsp;</th>
+      <th  >  Actions  </th>
+      <th> &nbsp; &nbsp;Article By  </th>
+      <th>  Created at  </th>
+      <th > &nbsp;  Updated at</th>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td>
+        <%= link_to 'Show |', article %> 
+        <% if logged_in? && (article.user == current_user || current_user.admin?)%>
+        <%= link_to 'Edit |', edit_article_path(article) %>
+        <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;
+        <% end%>
+        </td>
+        <td>  <% if article.user %>
+           &nbsp;&nbsp;   by <%= link_to article.user.username, user_path(article.user) %>
+            <% end %> &nbsp; &nbsp; &nbsp;  </td>
+        <td> <%= time_ago_in_words(article.created_at)%> &nbsp; &nbsp;&nbsp;</td>
+        <td> &nbsp;&nbsp; <%= time_ago_in_words(article.updated_at) %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>

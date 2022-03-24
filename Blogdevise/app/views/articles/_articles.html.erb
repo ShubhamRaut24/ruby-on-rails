@@ -1,0 +1,38 @@
+ <table>
+  <thead>
+    <tr>
+      <th>Title &nbsp; &nbsp;</th>
+      <th>Description &nbsp; &nbsp;</th>
+      <th>Categories  &nbsp; &nbsp; </th>
+      <th>  Created at  </th>
+      <th > &nbsp;  Updated at</th>
+      <th>  &nbsp; &nbsp;Actions  </th>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td>  <% if article.categories.any? %>
+              <%= render article.categories %> 
+            <% end %>
+         </td>
+          
+        <td> <%= time_ago_in_words(article.created_at)%> &nbsp; &nbsp;&nbsp;</td>
+        <td> &nbsp;&nbsp; <%= time_ago_in_words(article.updated_at) %> &nbsp;</td>
+        <td>
+        <%= link_to 'Show |', article %> 
+        <% if user_signed_in? && article.user==current_user%>
+        <%= link_to 'Edit |', edit_article_path(article) %>
+        <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>&nbsp;
+        <% end%>
+        </td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>

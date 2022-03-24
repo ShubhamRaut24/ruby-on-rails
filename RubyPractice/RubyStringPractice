@@ -1,0 +1,79 @@
+irb(main):014:0> 10.to_s
+=> "10"
+irb(main):015:0> 10.to_s.class
+=> String
+irb(main):016:0> full_name.length
+=> 8
+irb(main):017:0> full_name.length.class
+=> Integer
+irb(main):018:0> full_name.reverse
+=> "ilam mas"
+irb(main):019:0> full_name.empty?
+=> false
+
+irb(main):022:0> full_name.upcase!
+=> "SAM MALI"
+
+irb(main):026:0> full_name.start_with?
+=> false
+irb(main):027:0> full_name.start_with? "sam"
+=> false
+irb(main):028:0> full_name
+=> "SAM MALI"
+irb(main):029:0> full_name.start_with? "SAM"
+=> true
+
+irb(main):031:0> full_name.size
+=> 8
+irb(main):032:0> full_name.split " "
+=> ["SAM", "MALI"]
+
+irb(main):035:0> full_name
+=> "SAM MALI"
+irb(main):036:0> full_name.end_with? "MALI"
+=> true
+irb(main):037:0> new_name = full_name
+=> "SAM MALI"
+irb(main):038:0> full_name = "Shubham Raut"
+=> "Shubham Raut"
+irb(main):039:0> new_name
+=> "SAM MALI"
+irb(main):040:0> 'new name is #{new_name}'
+=> "new name is \#{new_name}"
+irb(main):041:0> "new name is #{new_name}"
+=> "new name is SAM MALI"
+
+
+
+
+irb(main):040:0> z.each do  |food|
+irb(main):041:1*  print food+" "
+irb(main):042:1> end
+i want to convert this line into string of arrays => ["i", "want", "to", "convert", "this", "line", "into", "string", "of", "arrays"]
+irb(main):043:0> z.each{ |food| print food+" "}
+i want to convert this line into string of arrays => ["i", "want", "to", "convert", "this", "line", "into", "string", "of", "arrays"]
+irb(main):044:0> 
+
+
+irb(main):002:0> sample_hash = {"a" => 1, "b" => 2, "c" => 3}
+=> {"a"=>1, "b"=>2, "c"=>3}
+irb(main):003:0> sample_hash
+=> {"a"=>1, "b"=>2, "c"=>3}
+irb(main):004:0> another_hash = {a:1, b:2, c:3, d:4}
+=> {:a=>1, :b=>2, :c=>3, :d=>4}
+irb(main):005:0> another_hash[:a]
+=> 1
+irb(main):006:0> 
+irb(main):006:0> sample_hash.keys
+=> ["a", "b", "c"]
+irb(main):007:0> sample_hash.values
+=> [1, 2, 3]
+irb(main):008:0> 
+
+irb(main):009:0> a
+=> {:a=>1, :b=>2, :c=>3, :d=>4}
+irb(main):010:0> a[:e] = "Shubham"
+=> "Shubham"
+irb(main):011:0> a
+=> {:a=>1, :b=>2, :c=>3, :d=>4, :e=>"Shubham"}
+irb(main):012:0> 

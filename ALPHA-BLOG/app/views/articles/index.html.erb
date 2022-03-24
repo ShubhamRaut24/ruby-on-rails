@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Articles</title>
+
+</head>
+
+<body>
+ 
+<h1 class="text-center mt-4">Listing all articles</h1>
+
+<div class="flickr_pagination">
+    <%= will_paginate @users, :container => false %>
+  </div>
+
+ <%= render 'articles' %>
+
+ <div class="flickr_pagination">
+    <%= will_paginate @users, :container => false %>
+  </div>
+
+ 
+<div>
+  <%= link_to "New Article", new_article_path%>
+</div>
+
+</body>
+
+</html>

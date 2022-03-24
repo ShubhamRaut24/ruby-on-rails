@@ -1,0 +1,49 @@
+shubhr@BG1YGJ3:~/Ruby on Rails/ALPHA-BLOG$ rails c
+Running via Spring preloader in process 118952
+Loading development environment (Rails 5.2.7)
+irb(main):001:0> Article.all
+  Article Load (1.2ms)  SELECT  "articles".* FROM "articles" LIMIT ?  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation []>
+irb(main):002:0> Article.create(title:"1st Article",description:"this is 1st Article")
+   (0.1ms)  begin transaction
+  Article Create (0.7ms)  INSERT INTO "articles" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "1st Article"], ["description", "this is 1st Article"], ["created_at", "2022-03-14 11:36:37.304688"], ["updated_at", "2022-03-14 11:36:37.304688"]]
+   (53.6ms)  commit transaction
+=> #<Article id: 1, title: "1st Article", description: "this is 1st Article", created_at: "2022-03-14 11:36:37", updated_at: "2022-03-14 11:36:37">
+irb(main):003:0> Article.all
+  Article Load (0.5ms)  SELECT  "articles".* FROM "articles" LIMIT ?  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation [#<Article id: 1, title: "1st Article", description: "this is 1st Article", created_at: "2022-03-14 11:36:37", updated_at: "2022-03-14 11:36:37">]>
+irb(main):004:0> article = Ar
+Arel           ArgumentError  Array          Article        
+irb(main):004:0> article = Article.new 
+=> #<Article id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+irb(main):005:0> article
+=> #<Article id: nil, title: nil, description: nil, created_at: nil, updated_at: nil>
+irb(main):006:0> article.title = "2nd Article"
+=> "2nd Article"
+irb(main):007:0> article.description = "description of second artilcle"
+=> "description of second artilcle"
+irb(main):008:0> article
+=> #<Article id: nil, title: "2nd Article", description: "description of second artilcle", created_at: nil, updated_at: nil>
+irb(main):009:0> article.save
+   (0.1ms)  begin transaction
+  Article Create (0.8ms)  INSERT INTO "articles" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "2nd Article"], ["description", "description of second artilcle"], ["created_at", "2022-03-14 11:40:57.354158"], ["updated_at", "2022-03-14 11:40:57.354158"]]
+   (8.8ms)  commit transaction
+=> true
+irb(main):010:0> Article.all
+  Article Load (0.4ms)  SELECT  "articles".* FROM "articles" LIMIT ?  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation [#<Article id: 1, title: "1st Article", description: "this is 1st Article", created_at: "2022-03-14 11:36:37", updated_at: "2022-03-14 11:36:37">, #<Article id: 2, title: "2nd Article", description: "description of second artilcle", created_at: "2022-03-14 11:40:57", updated_at: "2022-03-14 11:40:57">]>
+irb(main):011:0> article.Article.new(title:"3rd Article",description:"this 3rd Article")
+Traceback (most recent call last):
+        1: from (irb):11
+NoMethodError (undefined method `Article' for #<Article:0x00007f99643aa278>)
+irb(main):012:0> article=Article.new(title:"3rd Article",description:"this 3rd Article")
+=> #<Article id: nil, title: "3rd Article", description: "this 3rd Article", created_at: nil, updated_at: nil>
+irb(main):013:0> article.save
+   (0.1ms)  begin transaction
+  Article Create (1.1ms)  INSERT INTO "articles" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "3rd Article"], ["description", "this 3rd Article"], ["created_at", "2022-03-14 11:43:45.009826"], ["updated_at", "2022-03-14 11:43:45.009826"]]
+   (53.8ms)  commit transaction
+=> true
+irb(main):014:0> Article.all
+  Article Load (0.6ms)  SELECT  "articles".* FROM "articles" LIMIT ?  [["LIMIT", 11]]
+=> #<ActiveRecord::Relation [#<Article id: 1, title: "1st Article", description: "this is 1st Article", created_at: "2022-03-14 11:36:37", updated_at: "2022-03-14 11:36:37">, #<Article id: 2, title: "2nd Article", description: "description of second artilcle", created_at: "2022-03-14 11:40:57", updated_at: "2022-03-14 11:40:57">, #<Article id: 3, title: "3rd Article", description: "this 3rd Article", created_at: "2022-03-14 11:43:45", updated_at: "2022-03-14 11:43:45">]>
+irb(main):015:0> 

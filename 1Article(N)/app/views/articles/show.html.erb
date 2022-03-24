@@ -1,0 +1,20 @@
+<h1>Show</h1>
+  <p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+<p>
+  <strong>Article By:</strong>
+  <%= @article.user.username %>
+</p>
+
+ <% if logged_in? && (@article.user == current_user || current_user.admin?)%>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<% end%>
+<%= link_to 'Back', articles_path %>
+<br/>
